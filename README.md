@@ -26,3 +26,11 @@ The checked-in canonical URL assumes this repository name:
 The `.nojekyll` file keeps GitHub Pages in plain-static mode. Relative asset links already support the repository subpath.
 
 If the repository name or domain changes, update the canonical URLs, Open Graph URLs, `robots.txt`, `sitemap.xml`, and the link in `404.html` before publishing.
+
+## Search and analytics
+
+- Search Console ownership uses `google33b37af558f1aef9.html`; keep this file deployed.
+- Submit `https://charlesluo20140904.github.io/material-calculators/sitemap.xml` in Search Console.
+- GA4 uses measurement ID `G-554TWQ868E` through `assets/js/analytics.js`.
+- The Google tag loads only after the visitor allows analytics. Calculator input values are never included in events.
+- Visitors can review or change their choice from the Privacy page.

@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/content.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="../assets/css/consent.css">
+  <script type="module" src="../assets/js/analytics.js"></script>
 </head>
 <body>
   <div class="site-shell">
@@ -45,7 +47,7 @@
         <div class="legal-intro">
           <p class="eyebrow">Plain-language policy</p>
           <h1>Privacy</h1>
-          <p class="lede">Project measurements are calculated locally in your browser. This version of the site has no accounts, analytics, advertising, or measurement database.</p>
+          <p class="lede">Project measurements are calculated locally in your browser. Analytics is optional, and the site does not use accounts, advertising, or a measurement database.</p>
         </div>
         <div class="legal-copy">
           <section>
@@ -54,15 +56,17 @@
           </section>
           <section>
             <h2>Storage and cookies</h2>
-            <p>The site does not set first-party cookies or use local storage. Reloading a calculator restores its default example values.</p>
+            <p>Your analytics choice is saved in local storage. If you allow analytics, Google Analytics may use first-party cookies to distinguish visits. Calculator values are not placed in cookies or local storage, and reloading a calculator restores its default examples.</p>
+          </section>
+          <section>
+            <h2>Optional analytics</h2>
+            <p>Google Analytics loads only after you select “Allow analytics.” It records page views, general device and location information, scrolls, outbound links, and calculator actions such as changing units or copying a result. It does not receive the dimensions, quantities, or prices you enter.</p>
+            <button class="privacy-choice-button" type="button" data-consent-settings>Review analytics choices</button>
           </section>
           <section>
             <h2>Third-party requests</h2>
-            <p>The visual design loads fonts from Google Fonts, which receives standard web-request information such as your IP address and browser headers. Source links in the calculation notes open external websites with their own privacy policies.</p>
-          </section>
-          <section>
-            <h2>Future changes</h2>
-            <p>If analytics or advertising is added later, this page must be updated before those services are enabled. Last updated October 16, 2026.</p>
+            <p>The visual design loads fonts from Google Fonts, which receives standard web-request information such as your IP address and browser headers. Google Analytics receives data only with your permission. Source links open external websites with their own privacy policies.</p>
+            <p>Last updated October 16, 2026.</p>
           </section>
         </div>
       </div>

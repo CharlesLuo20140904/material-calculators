@@ -1,0 +1,119 @@
+.consent-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1000;
+  width: min(520px, calc(100% - 44px));
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  border: 1px solid rgba(255, 253, 247, 0.2);
+  border-radius: var(--radius-md, 16px);
+  background: var(--forest-deep, #173e30);
+  box-shadow: 0 24px 70px rgba(10, 22, 16, 0.24);
+  color: var(--cream, #fffdf7);
+  animation: consent-enter 420ms var(--ease, ease-out) both;
+}
+
+.consent-copy h2 {
+  margin: 2px 0 8px;
+  color: inherit;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.consent-copy p {
+  margin: 0;
+  color: rgba(255, 253, 247, 0.75);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.consent-copy .consent-kicker {
+  color: #b9d9ca;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.consent-copy a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--cream, #fffdf7);
+  font-size: 11px;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.consent-actions {
+  min-width: 132px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.consent-actions button,
+.privacy-choice-button {
+  padding: 10px 15px;
+  border: 1px solid var(--cream, #fffdf7);
+  border-radius: 999px;
+  background: var(--cream, #fffdf7);
+  color: var(--forest-deep, #173e30);
+  cursor: pointer;
+  font: 700 11px/1.2 var(--font-sans, sans-serif);
+}
+
+.consent-actions .consent-secondary {
+  background: transparent;
+  color: var(--cream, #fffdf7);
+}
+
+.consent-actions .consent-later {
+  padding: 4px 8px;
+  border-color: transparent;
+  background: transparent;
+  color: rgba(255, 253, 247, 0.68);
+}
+
+.privacy-choice-button {
+  margin-top: 8px;
+  border-color: var(--forest, #245b45);
+  background: transparent;
+  color: var(--forest-deep, #173e30);
+}
+
+.consent-actions button:hover,
+.privacy-choice-button:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes consent-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 620px) {
+  .consent-panel {
+    right: 14px;
+    bottom: 14px;
+    width: calc(100% - 28px);
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .consent-actions {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .consent-actions .consent-later {
+    grid-column: 1 / -1;
+  }
+}
