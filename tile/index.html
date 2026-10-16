@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate tile quantity, boxes, waste allowance, project area, and material cost in imperial or metric units.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#294354">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Project Matter">
+  <meta property="og:title" content="Tile Calculator — Tiles, Boxes & Cost">
+  <meta property="og:description" content="Estimate full tiles and boxes with editable tile size, pack count, waste allowance, and price.">
+  <meta property="og:url" content="https://charlesluo20140904.github.io/material-calculators/tile/">
+  <meta name="twitter:card" content="summary">
+  <title>Tile Calculator — Tiles, Boxes & Cost | Project Matter</title>
+  <link rel="canonical" href="https://charlesluo20140904.github.io/material-calculators/tile/">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/calculator.css">
+  <link rel="stylesheet" href="../assets/css/calculator-result.css">
+  <link rel="stylesheet" href="../assets/css/content.css">
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script type="module" src="../assets/js/pages/tile-page.js"></script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Tile Calculator","url":"https://charlesluo20140904.github.io/material-calculators/tile/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Estimate tile quantity, full boxes, project area, waste allowance, and material cost."}
+  </script>
+</head>
+<body class="calculator-page tile-theme">
+  <div class="site-shell">
+    <div class="tool-ribbon" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="../" aria-label="Project Matter home">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span class="brand-name">Project Matter</span>
+        </a>
+        <nav class="main-nav" aria-label="Calculator navigation">
+          <a class="mobile-nav-link" href="../#tools">Tools</a>
+          <a href="../paint/">Paint</a>
+          <a class="nav-current" aria-current="page" href="./">Tile</a>
+          <a href="../wallpaper/">Wallpaper</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="calculator-main">
+      <div class="section-wrap">
+        <section class="calculator-intro">
+          <div>
+            <p class="eyebrow">Tile / material estimate</p>
+            <h1 class="display-title">Tile calculator</h1>
+            <p class="lede">Turn room and tile dimensions into a box-ready purchase quantity, with editable waste, pack size, and material price.</p>
+          </div>
+          <aside class="trust-note">
+            <strong>Box rounding is built in.</strong>
+            The calculator rounds up to full tiles, then full boxes—the way material is actually purchased.
+          </aside>
+        </section>
+
+        <section class="calculator-stage" aria-label="Tile estimator">
+          <form class="calculator-form" id="tile-form" data-unit="imperial" novalidate>
+            <div class="form-toolbar">
+              <h2>Surface & product</h2>
+              <div class="unit-toggle" aria-label="Measurement system">
+                <button type="button" data-unit-target="imperial" aria-pressed="true">Imperial</button>
+                <button type="button" data-unit-target="metric" aria-pressed="false">Metric</button>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Surface</h3>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="tile-room-length">Length</label>
+                  <div class="input-wrap">
+                    <input id="tile-room-length" name="length" type="number" value="12" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="tile-room-width">Width</label>
+                  <div class="input-wrap">
+                    <input id="tile-room-width" name="width" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Tile size</h3>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="tile-width">Tile width</label>
+                  <div class="input-wrap">
+                    <input id="tile-width" name="tileWidth" type="number" value="12" min="0.01" step="0.1" data-convert="smallLength" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="in" data-unit-metric="cm">in</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="tile-height">Tile length</label>
+                  <div class="input-wrap">
+                    <input id="tile-height" name="tileHeight" type="number" value="24" min="0.01" step="0.1" data-convert="smallLength" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="in" data-unit-metric="cm">in</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Ordering</h3>
+              <div class="field-grid three">
+                <div class="field">
+                  <label for="tile-waste">Waste allowance</label>
+                  <div class="input-wrap">
+                    <input id="tile-waste" name="waste" type="number" value="10" min="0" step="1" inputmode="decimal">
+                    <span class="unit-label">%</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="tile-box">Tiles per box</label>
+                  <div class="input-wrap"><input id="tile-box" name="tilesPerBox" type="number" value="8" min="1" step="1" inputmode="numeric"></div>
+                </div>
+                <div class="field">
+                  <label for="tile-price">Price per box</label>
+                  <div class="input-wrap">
+                    <input id="tile-price" name="pricePerBox" type="number" value="64" min="0" step="0.01" inputmode="decimal">
+                    <span class="unit-label">$</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="button" type="button" data-action="reset">Reset</button>
+              <button class="button" type="button" data-action="copy">Copy estimate</button>
+              <button class="button primary" type="button" data-action="print">Print summary</button>
+            </div>
+          </form>
+
+          <aside class="result-panel" aria-label="Tile estimate results" aria-live="polite">
+            <p class="result-kicker">Purchase estimate</p>
+            <div class="result-primary">
+              <output id="tile-boxes">—</output>
+              <span>full boxes to buy</span>
+            </div>
+            <dl class="result-list">
+              <div class="result-row"><dt>Tiles supplied</dt><dd id="tile-count">—</dd></div>
+              <div class="result-row"><dt>Project area</dt><dd id="tile-area">—</dd></div>
+              <div class="result-row"><dt>Estimated tile cost</dt><dd id="tile-cost">—</dd></div>
+            </dl>
+            <p class="result-caution">Use the exact tile count and coverage printed on the box. Complex layouts can require a larger waste allowance.</p>
+          </aside>
+        </section>
+
+        <section class="formula-section">
+          <h2>From measured area to whole boxes.</h2>
+          <div class="formula-copy">
+            <article>
+              <h3>Calculation</h3>
+              <p>Surface area is divided by one tile's area. Waste is applied before the result is rounded to whole tiles and then whole boxes.</p>
+            </article>
+            <article>
+              <h3>Waste</h3>
+              <p>The 10% default is a common planning allowance referenced by Home Depot. Diagonal or intricate layouts may need more. <a href="https://www.homedepot.com/catalog/pdfImages/9c/9ce5c3b6-a4fc-4975-9874-dcdb949dd4e8.pdf" rel="noreferrer">Source</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" aria-labelledby="tile-guide-title">
+          <div class="guide-heading">
+            <p class="eyebrow">Before you order</p>
+            <h2 id="tile-guide-title">Let the layout set the allowance.</h2>
+          </div>
+          <div class="guide-list">
+            <article class="guide-item"><span class="guide-number">01</span><div><h3>Measure the tiled surface only</h3><p>Split irregular rooms into rectangles, calculate each area, then add the dimensions before entering them here.</p></div></article>
+            <article class="guide-item"><span class="guide-number">02</span><div><h3>Increase waste for complex cuts</h3><p>Ten percent suits many straight layouts; diagonals, niches, fragile tile, and matching patterns can require more.</p></div></article>
+            <article class="guide-item"><span class="guide-number">03</span><div><h3>Verify the carton</h3><p>Use the actual pieces per box and keep spare tile from the same lot for future repairs.</p></div></article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <span>Planning estimate only. Confirm coverage, lot, and pack quantities before ordering.</span>
+        <div class="footer-links"><a href="../">Home</a><a href="../paint/">Paint</a><a href="../wallpaper/">Wallpaper</a><a href="../privacy/">Privacy</a></div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

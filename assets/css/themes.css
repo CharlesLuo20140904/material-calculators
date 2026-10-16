@@ -1,0 +1,52 @@
+.paint-theme {
+  --accent: #2f684f;
+  --result-bg: #234c3b;
+  --result-ink: #f8f3e7;
+}
+
+.tile-theme {
+  --accent: #3f5d72;
+  --result-bg: #294354;
+  --result-ink: #f5f2e9;
+}
+
+.wallpaper-theme {
+  --accent: #98533f;
+  --result-bg: #713f34;
+  --result-ink: #fff5e9;
+}
+
+.calculator-page .eyebrow {
+  color: var(--accent);
+}
+
+.tool-ribbon {
+  height: 9px;
+  background: var(--accent);
+}
+
+.tile-theme .calculator-stage {
+  background-image: linear-gradient(rgba(63, 93, 114, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63, 93, 114, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.wallpaper-theme .calculator-stage {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(152, 83, 63, 0.04) 0,
+    rgba(152, 83, 63, 0.04) 24px,
+    transparent 24px,
+    transparent 48px
+  );
+}
+
+.calculator-page .unit-toggle button[aria-pressed='true'],
+.calculator-page .button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.calculator-page .check-row input {
+  accent-color: var(--accent);
+}

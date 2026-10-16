@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estimate paint for walls and ceilings with room dimensions, openings, coats, coverage, waste, and cost. Imperial and metric units.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#234c3b">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Project Matter">
+  <meta property="og:title" content="Paint Calculator — Gallons, Litres & Cost">
+  <meta property="og:description" content="Estimate wall and ceiling paint with editable coverage, coats, openings, waste, and price.">
+  <meta property="og:url" content="https://charlesluo20140904.github.io/material-calculators/paint/">
+  <meta name="twitter:card" content="summary">
+  <title>Paint Calculator — Gallons, Litres & Cost | Project Matter</title>
+  <link rel="canonical" href="https://charlesluo20140904.github.io/material-calculators/paint/">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/calculator.css">
+  <link rel="stylesheet" href="../assets/css/calculator-result.css">
+  <link rel="stylesheet" href="../assets/css/content.css">
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script type="module" src="../assets/js/pages/paint-page.js"></script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Paint Calculator","url":"https://charlesluo20140904.github.io/material-calculators/paint/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Estimate paint volume and cost from room dimensions, coats, coverage, openings, and waste allowance."}
+  </script>
+</head>
+<body class="calculator-page paint-theme">
+  <div class="site-shell">
+    <div class="tool-ribbon" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="../" aria-label="Project Matter home">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span class="brand-name">Project Matter</span>
+        </a>
+        <nav class="main-nav" aria-label="Calculator navigation">
+          <a class="mobile-nav-link" href="../#tools">Tools</a>
+          <a class="nav-current" aria-current="page" href="./">Paint</a>
+          <a href="../tile/">Tile</a>
+          <a href="../wallpaper/">Wallpaper</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="calculator-main">
+      <div class="section-wrap">
+        <section class="calculator-intro">
+          <div>
+            <p class="eyebrow">Paint / material estimate</p>
+            <h1 class="display-title">Paint calculator</h1>
+            <p class="lede">Estimate walls and an optional ceiling, then account for openings, coats, coverage, waste, and the price on your paint can.</p>
+          </div>
+          <aside class="trust-note">
+            <strong>Your measurements stay private.</strong>
+            This calculation runs entirely in your browser. No room data is uploaded or stored.
+          </aside>
+        </section>
+
+        <section class="calculator-stage" aria-label="Paint estimator">
+          <form class="calculator-form" id="paint-form" data-unit="imperial" novalidate>
+            <div class="form-toolbar">
+              <h2>Project measurements</h2>
+              <div class="unit-toggle" aria-label="Measurement system">
+                <button type="button" data-unit-target="imperial" aria-pressed="true">Imperial</button>
+                <button type="button" data-unit-target="metric" aria-pressed="false">Metric</button>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Room</h3>
+              <div class="field-grid three">
+                <div class="field">
+                  <label for="paint-length">Length</label>
+                  <div class="input-wrap">
+                    <input id="paint-length" name="length" type="number" value="12" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paint-width">Width</label>
+                  <div class="input-wrap">
+                    <input id="paint-width" name="width" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paint-height">Wall height</label>
+                  <div class="input-wrap">
+                    <input id="paint-height" name="height" type="number" value="8" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Openings & coats</h3>
+              <div class="field-grid three">
+                <div class="field">
+                  <label for="paint-doors">Standard doors</label>
+                  <div class="input-wrap"><input id="paint-doors" name="doors" type="number" value="1" min="0" step="1" inputmode="numeric"></div>
+                </div>
+                <div class="field">
+                  <label for="paint-windows">Standard windows</label>
+                  <div class="input-wrap"><input id="paint-windows" name="windows" type="number" value="2" min="0" step="1" inputmode="numeric"></div>
+                </div>
+                <div class="field">
+                  <label for="paint-coats">Coats</label>
+                  <div class="input-wrap"><input id="paint-coats" name="coats" type="number" value="2" min="1" step="1" inputmode="numeric"></div>
+                </div>
+                <label class="check-row field full">
+                  <input name="includeCeiling" type="checkbox">
+                  <span>Include the ceiling in this paint estimate.</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Product & allowance</h3>
+              <div class="field-grid three">
+                <div class="field">
+                  <label for="paint-coverage">Coverage</label>
+                  <div class="input-wrap">
+                    <input id="paint-coverage" name="coverage" type="number" value="350" min="1" step="1" data-convert="paintCoverage" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft²/gal" data-unit-metric="m²/L">ft²/gal</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paint-waste">Extra allowance</label>
+                  <div class="input-wrap">
+                    <input id="paint-waste" name="waste" type="number" value="5" min="0" step="1" inputmode="decimal">
+                    <span class="unit-label">%</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paint-price">Price</label>
+                  <div class="input-wrap">
+                    <input id="paint-price" name="price" type="number" value="42" min="0" step="0.01" data-convert="priceVolume" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="$/gal" data-unit-metric="$/L">$/gal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="button" type="button" data-action="reset">Reset</button>
+              <button class="button" type="button" data-action="copy">Copy estimate</button>
+              <button class="button primary" type="button" data-action="print">Print summary</button>
+            </div>
+          </form>
+
+          <aside class="result-panel" aria-label="Paint estimate results" aria-live="polite">
+            <p class="result-kicker">Purchase estimate</p>
+            <div class="result-primary">
+              <output id="paint-purchase">—</output>
+              <span>paint to buy, rounded to practical quarter-gallon or litre increments</span>
+            </div>
+            <dl class="result-list">
+              <div class="result-row"><dt>Exact calculated use</dt><dd id="paint-exact">—</dd></div>
+              <div class="result-row"><dt>Prepared surface</dt><dd id="paint-area">—</dd></div>
+              <div class="result-row"><dt>Estimated paint cost</dt><dd id="paint-cost">—</dd></div>
+            </dl>
+            <p class="result-caution">Coverage varies with texture, porosity, application, and product. Confirm the label before purchase.</p>
+          </aside>
+        </section>
+
+        <section class="formula-section">
+          <h2>The assumptions are part of the answer.</h2>
+          <div class="formula-copy">
+            <article>
+              <h3>Coverage</h3>
+              <p>The default 350 ft² per gallon follows the lower end of Sherwin-Williams' typical 350–400 ft² range. Replace it with your product label. <a href="https://www.sherwin-williams.com/en-us/color/color-tools/paint-calculator" rel="noreferrer">Source</a></p>
+            </article>
+            <article>
+              <h3>Openings</h3>
+              <p>Standard openings use 21 ft² per door and 12 ft² per window. Unusual openings should be adjusted by changing the room estimate conservatively.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" aria-labelledby="paint-guide-title">
+          <div class="guide-heading">
+            <p class="eyebrow">Before you buy</p>
+            <h2 id="paint-guide-title">Three checks that prevent a second trip.</h2>
+          </div>
+          <div class="guide-list">
+            <article class="guide-item"><span class="guide-number">01</span><div><h3>Use the label coverage</h3><p>Primer, textured walls, porous surfaces, and dramatic color changes can reduce real coverage.</p></div></article>
+            <article class="guide-item"><span class="guide-number">02</span><div><h3>Count every coat</h3><p>The estimate multiplies the prepared surface by your coat count before adding the extra allowance.</p></div></article>
+            <article class="guide-item"><span class="guide-number">03</span><div><h3>Keep the batch consistent</h3><p>Buy the project quantity together and box multiple cans before painting for more consistent color.</p></div></article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <span>Planning estimate only. Confirm coverage and pack sizes with your supplier.</span>
+        <div class="footer-links"><a href="../">Home</a><a href="../tile/">Tile</a><a href="../wallpaper/">Wallpaper</a><a href="../privacy/">Privacy</a></div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

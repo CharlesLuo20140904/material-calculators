@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://charlesluo20140904.github.io/material-calculators/sitemap.xml

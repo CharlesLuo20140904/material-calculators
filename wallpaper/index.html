@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate wallpaper rolls using total wall width, wall height, roll dimensions, trim allowance, and pattern repeat.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#713f34">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Project Matter">
+  <meta property="og:title" content="Wallpaper Calculator — Rolls & Pattern Repeat">
+  <meta property="og:description" content="Estimate full wallpaper drops and rolls with trim, roll dimensions, reserve, and vertical pattern repeat.">
+  <meta property="og:url" content="https://charlesluo20140904.github.io/material-calculators/wallpaper/">
+  <meta name="twitter:card" content="summary">
+  <title>Wallpaper Calculator — Rolls & Pattern Repeat | Project Matter</title>
+  <link rel="canonical" href="https://charlesluo20140904.github.io/material-calculators/wallpaper/">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/calculator.css">
+  <link rel="stylesheet" href="../assets/css/calculator-result.css">
+  <link rel="stylesheet" href="../assets/css/content.css">
+  <link rel="stylesheet" href="../assets/css/themes.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script type="module" src="../assets/js/pages/wallpaper-page.js"></script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Wallpaper Calculator","url":"https://charlesluo20140904.github.io/material-calculators/wallpaper/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Estimate wallpaper drops, rolls, pattern-repeat waste, reserve quantity, and material cost."}
+  </script>
+</head>
+<body class="calculator-page wallpaper-theme">
+  <div class="site-shell">
+    <div class="tool-ribbon" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="../" aria-label="Project Matter home">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span class="brand-name">Project Matter</span>
+        </a>
+        <nav class="main-nav" aria-label="Calculator navigation">
+          <a class="mobile-nav-link" href="../#tools">Tools</a>
+          <a href="../paint/">Paint</a>
+          <a href="../tile/">Tile</a>
+          <a class="nav-current" aria-current="page" href="./">Wallpaper</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="calculator-main">
+      <div class="section-wrap">
+        <section class="calculator-intro">
+          <div>
+            <p class="eyebrow">Wallpaper / roll estimate</p>
+            <h1 class="display-title">Wallpaper calculator</h1>
+            <p class="lede">Estimate full drops and rolls from the dimensions printed on your roll, including trim and vertical pattern repeat.</p>
+          </div>
+          <aside class="trust-note">
+            <strong>Pattern repeat changes the answer.</strong>
+            The calculator rounds each drop to the next full repeat before calculating how many fit on a roll.
+          </aside>
+        </section>
+
+        <section class="calculator-stage" aria-label="Wallpaper estimator">
+          <form class="calculator-form" id="wallpaper-form" data-unit="imperial" novalidate>
+            <div class="form-toolbar">
+              <h2>Wall & roll details</h2>
+              <div class="unit-toggle" aria-label="Measurement system">
+                <button type="button" data-unit-target="imperial" aria-pressed="true">Imperial</button>
+                <button type="button" data-unit-target="metric" aria-pressed="false">Metric</button>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Wall</h3>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="paper-width">Total wall width</label>
+                  <div class="input-wrap">
+                    <input id="paper-width" name="wallWidth" type="number" value="44" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paper-height">Wall height</label>
+                  <div class="input-wrap">
+                    <input id="paper-height" name="height" type="number" value="8" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Roll label</h3>
+              <div class="field-grid three">
+                <div class="field">
+                  <label for="paper-roll-width">Roll width</label>
+                  <div class="input-wrap">
+                    <input id="paper-roll-width" name="rollWidth" type="number" value="20.5" min="0.01" step="0.1" data-convert="smallLength" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="in" data-unit-metric="cm">in</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paper-roll-length">Roll length</label>
+                  <div class="input-wrap">
+                    <input id="paper-roll-length" name="rollLength" type="number" value="33" min="0.01" step="0.1" data-convert="length" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paper-repeat">Pattern repeat</label>
+                  <div class="input-wrap">
+                    <input id="paper-repeat" name="repeat" type="number" value="20.5" min="0" step="0.1" data-convert="smallLength" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="in" data-unit-metric="cm">in</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-section">
+              <h3>Allowance & price</h3>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="paper-trim">Trim per drop</label>
+                  <div class="input-wrap">
+                    <input id="paper-trim" name="trim" type="number" value="4" min="0" step="0.1" data-convert="smallLength" inputmode="decimal">
+                    <span class="unit-label" data-unit-imperial="in" data-unit-metric="cm">in</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="paper-price">Price per roll</label>
+                  <div class="input-wrap">
+                    <input id="paper-price" name="pricePerRoll" type="number" value="68" min="0" step="0.01" inputmode="decimal">
+                    <span class="unit-label">$</span>
+                  </div>
+                </div>
+                <label class="check-row field full">
+                  <input name="reserveRoll" type="checkbox" checked>
+                  <span>Add one reserve roll for repairs and dye-lot continuity.</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="button" type="button" data-action="reset">Reset</button>
+              <button class="button" type="button" data-action="copy">Copy estimate</button>
+              <button class="button primary" type="button" data-action="print">Print summary</button>
+            </div>
+          </form>
+
+          <aside class="result-panel" aria-label="Wallpaper estimate results" aria-live="polite">
+            <p class="result-kicker">Purchase estimate</p>
+            <div class="result-primary">
+              <output id="wallpaper-rolls">—</output>
+              <span>rolls to buy, including the selected reserve</span>
+            </div>
+            <dl class="result-list">
+              <div class="result-row"><dt>Full drops required</dt><dd id="wallpaper-drops">—</dd></div>
+              <div class="result-row"><dt>Drops per roll</dt><dd id="wallpaper-per-roll">—</dd></div>
+              <div class="result-row"><dt>Estimated paper cost</dt><dd id="wallpaper-cost">—</dd></div>
+            </dl>
+            <p class="result-caution" id="wallpaper-message">Confirm the roll label and dye lot before ordering.</p>
+          </aside>
+        </section>
+
+        <section class="formula-section">
+          <h2>Repeat-aware, not just area divided by area.</h2>
+          <div class="formula-copy">
+            <article>
+              <h3>Matched drops</h3>
+              <p>Each wall-height drop includes trim, then rounds up to a whole vertical repeat. This avoids undercounting patterned paper.</p>
+            </article>
+            <article>
+              <h3>Industry guidance</h3>
+              <p>The Wallcoverings Association recommends allowing for pattern match, trim, and consistent run numbers. <a href="https://www.wallcoverings.org/page/HowtoEstimate" rel="noreferrer">Source</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="guide-section" aria-labelledby="paper-guide-title">
+          <div class="guide-heading">
+            <p class="eyebrow">Before you order</p>
+            <h2 id="paper-guide-title">Read the roll label twice.</h2>
+          </div>
+          <div class="guide-list">
+            <article class="guide-item"><span class="guide-number">01</span><div><h3>Enter the packaged roll size</h3><p>Single-roll and double-roll naming varies. Use the physical width and length printed on the product label.</p></div></article>
+            <article class="guide-item"><span class="guide-number">02</span><div><h3>Use the vertical repeat</h3><p>A straight or drop match can consume extra length even when the total square footage appears sufficient.</p></div></article>
+            <article class="guide-item"><span class="guide-number">03</span><div><h3>Keep one run number</h3><p>Order the project together and confirm every roll has the same dye-lot or run number before cutting.</p></div></article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <span>Planning estimate only. Verify physical roll dimensions, match type, and run number.</span>
+        <div class="footer-links"><a href="../">Home</a><a href="../paint/">Paint</a><a href="../tile/">Tile</a><a href="../privacy/">Privacy</a></div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
