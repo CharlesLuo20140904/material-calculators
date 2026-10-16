@@ -30,7 +30,7 @@ function existingTarget(target) {
 }
 
 function checkMetadata(path, html) {
-  if (path.endsWith('404.html')) return;
+  if (path.endsWith('404.html') || /google[a-f0-9]+\.html$/.test(path)) return;
   const fields = [
     ['title', /<title>.+<\/title>/s],
     ['description', /<meta name="description" content=".+">/s],
