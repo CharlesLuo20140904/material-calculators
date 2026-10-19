@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate flooring boxes, coverage, waste allowance, overage, and material cost in imperial or metric units.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#65513f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Project Matter">
+  <meta property="og:title" content="Flooring Calculator — Boxes, Waste & Cost">
+  <meta property="og:description" content="Estimate flooring boxes from room size, pack coverage, layout waste, and price.">
+  <meta property="og:url" content="https://usefulweblab.com/flooring/">
+  <meta name="google-adsense-account" content="ca-pub-7381591341067052">
+  <meta name="twitter:card" content="summary">
+  <title>Flooring Calculator — Boxes, Waste & Cost | Project Matter</title>
+  <link rel="canonical" href="https://usefulweblab.com/flooring/">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/calculator.css">
+  <link rel="stylesheet" href="../assets/css/calculator-result.css">
+  <link rel="stylesheet" href="../assets/css/content.css">
+  <link rel="stylesheet" href="../assets/css/themes.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/consent.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7381591341067052" crossorigin="anonymous"></script>
+  <script type="module" src="../assets/js/analytics.js"></script>
+  <script type="module" src="../assets/js/pages/flooring-page.js?v=20261019c"></script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Flooring Calculator","url":"https://usefulweblab.com/flooring/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Estimate flooring boxes and cost from room size, pack coverage, and waste allowance."}
+  </script>
+</head>
+<body class="calculator-page flooring-theme">
+  <div class="site-shell">
+    <div class="tool-ribbon" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="../" aria-label="Project Matter home"><span class="brand-mark" aria-hidden="true">M</span><span class="brand-name">Project Matter</span></a>
+        <nav class="main-nav" aria-label="Calculator navigation">
+          <a class="mobile-nav-link" href="../#tools">Tools</a>
+          <a class="nav-current" aria-current="page" href="./">Flooring</a>
+          <a href="../drywall/">Drywall</a>
+          <a href="../concrete/">Concrete</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="calculator-main">
+      <div class="section-wrap">
+        <section class="calculator-intro">
+          <div><p class="eyebrow">Flooring / box estimate</p><h1 class="display-title">Flooring calculator</h1><p class="lede">Turn room measurements into full boxes, then see the coverage and cost you will actually take home.</p></div>
+          <aside class="trust-note"><strong>Your measurements stay private.</strong>This calculation runs in your browser. No room data is uploaded or stored.</aside>
+        </section>
+
+        <section class="calculator-stage" aria-label="Flooring estimator">
+          <form class="calculator-form" id="flooring-form" data-unit="imperial" novalidate>
+            <div class="form-toolbar">
+              <h2>Project measurements</h2>
+              <div class="unit-toggle" aria-label="Measurement system">
+                <button type="button" data-unit-target="imperial" aria-pressed="true">Imperial</button>
+                <button type="button" data-unit-target="metric" aria-pressed="false">Metric</button>
+              </div>
+            </div>
+            <div class="field-section">
+              <h3>Room</h3>
+              <div class="field-grid">
+                <div class="field"><label for="flooring-length">Length</label><div class="input-wrap"><input id="flooring-length" name="length" type="number" value="12" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+                <div class="field"><label for="flooring-width">Width</label><div class="input-wrap"><input id="flooring-width" name="width" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+              </div>
+            </div>
+            <div class="field-section">
+              <h3>Product & layout</h3>
+              <div class="field-grid three">
+                <div class="field"><label for="flooring-coverage">Coverage per box</label><div class="input-wrap"><input id="flooring-coverage" name="coveragePerBox" type="number" value="22" min="0.01" step="0.01" data-convert="area" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft²" data-unit-metric="m²">ft²</span></div></div>
+                <div class="field"><label for="flooring-waste">Cutting allowance</label><div class="input-wrap"><input id="flooring-waste" name="waste" type="number" value="10" min="0" step="1" inputmode="decimal"><span class="unit-label">%</span></div></div>
+                <div class="field"><label for="flooring-price">Price per box</label><div class="input-wrap"><input id="flooring-price" name="pricePerBox" type="number" value="55" min="0" step="0.01" inputmode="decimal"><span class="unit-label">$</span></div></div>
+              </div>
+            </div>
+            <div class="form-actions"><button class="button" type="button" data-action="reset">Reset</button><button class="button" type="button" data-action="copy">Copy estimate</button><button class="button primary" type="button" data-action="print">Print summary</button></div>
+          </form>
+
+          <aside class="result-panel" aria-label="Flooring estimate results" aria-live="polite">
+            <p class="result-kicker">Purchase estimate</p>
+            <div class="result-primary"><output id="flooring-boxes">—</output><span>full boxes to buy after the cutting allowance</span></div>
+            <dl class="result-list">
+              <div class="result-row"><dt>Measured floor</dt><dd id="flooring-area">—</dd></div>
+              <div class="result-row"><dt>Flooring supplied</dt><dd id="flooring-supplied">—</dd></div>
+              <div class="result-row"><dt>Estimated material cost</dt><dd id="flooring-cost">—</dd></div>
+            </dl>
+            <p class="result-caution">Confirm coverage, lot availability, layout, and return policy before ordering.</p>
+          </aside>
+        </section>
+
+        <section class="formula-section">
+          <h2>Boxes come after the layout allowance.</h2>
+          <div class="formula-copy">
+            <article><h3>The calculation</h3><p>Room area is multiplied by your cutting allowance, divided by the coverage printed on one box, then rounded up to a full box.</p></article>
+            <article><h3>Waste is editable</h3><p>The 10% starting point matches common straight-layout guidance. Diagonal patterns and irregular rooms often need more. <a href="https://www.homedepot.com/c/ah/how-to-install-lifeproof-flooring/9ba683603be9fa5395fab901af0e0782" rel="noreferrer">Source</a></p></article>
+          </div>
+        </section>
+
+        <section class="guide-section" aria-labelledby="flooring-guide-title">
+          <div class="guide-heading"><p class="eyebrow">Before you buy</p><h2 id="flooring-guide-title">Measure the cuts, not just the room.</h2></div>
+          <div class="guide-list">
+            <article class="guide-item"><span class="guide-number">01</span><div><h3>Split irregular plans</h3><p>Measure each rectangle separately and add the areas before entering the total equivalent dimensions.</p></div></article>
+            <article class="guide-item"><span class="guide-number">02</span><div><h3>Match the layout</h3><p>Increase the allowance for diagonal work, narrow spaces, heavy pattern matching, or selective boards.</p></div></article>
+            <article class="guide-item"><span class="guide-number">03</span><div><h3>Protect future repairs</h3><p>Consider keeping an unopened matching box where dye lot, grain, or product availability may change.</p></div></article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="footer-wrap"><span>Planning estimate only. Confirm pack coverage with your supplier.</span><div class="footer-links"><a href="../">Home</a><a href="../drywall/">Drywall</a><a href="../concrete/">Concrete</a><a href="../privacy/">Privacy</a></div></div></footer>
+  </div>
+</body>
+</html>

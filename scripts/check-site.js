@@ -52,7 +52,10 @@ function checkProductionDomain(path, html) {
 
 function checkAdsense(path, html) {
   const relativePath = relative(root, path);
-  const monetized = ['index.html', 'paint/index.html', 'tile/index.html', 'wallpaper/index.html'];
+  const monetized = [
+    'index.html', 'paint/index.html', 'tile/index.html', 'wallpaper/index.html',
+    'flooring/index.html', 'drywall/index.html', 'concrete/index.html',
+  ];
   if (!monetized.includes(relativePath)) return;
   if (!html.includes(`ca-${publisherId}`)) {
     errors.push(`${relativePath}: missing AdSense publisher ID`);

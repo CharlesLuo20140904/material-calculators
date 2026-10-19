@@ -1,14 +1,17 @@
 const factors = {
   length: 0.3048,
   smallLength: 2.54,
-  area: 0.092903,
+  area: 0.09290304,
   paintCoverage: 0.024542,
   priceVolume: 0.264172,
+  volume: 0.0283168,
 };
 
 function precision(kind) {
   if (kind === 'smallLength') return 1;
   if (kind === 'priceVolume') return 2;
+  if (kind === 'length' || kind === 'area') return 4;
+  if (kind === 'volume') return 4;
   return 2;
 }
 

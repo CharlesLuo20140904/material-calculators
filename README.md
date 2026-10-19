@@ -1,6 +1,6 @@
 # Project Matter
 
-A dependency-free static site with paint, tile, and wallpaper calculators. All calculations run in the browser.
+A dependency-free static site with paint, tile, wallpaper, flooring, drywall, and concrete calculators. All calculations run in the browser.
 
 ## Verify locally
 
@@ -9,7 +9,7 @@ npm run verify
 python3 -m http.server 4173
 ```
 
-Open `http://127.0.0.1:4173/` and check the three calculators.
+Open `http://127.0.0.1:4173/` and check the six calculators.
 
 ## Production
 

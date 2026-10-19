@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estimate drywall sheets for room walls and an optional ceiling with openings, panel size, waste, and cost.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#59635d">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Project Matter">
+  <meta property="og:title" content="Drywall Calculator — Sheets, Coverage & Cost">
+  <meta property="og:description" content="Estimate full drywall sheets with editable openings, panel size, waste, and price.">
+  <meta property="og:url" content="https://usefulweblab.com/drywall/">
+  <meta name="google-adsense-account" content="ca-pub-7381591341067052"><meta name="twitter:card" content="summary">
+  <title>Drywall Calculator — Sheets, Coverage & Cost | Project Matter</title>
+  <link rel="canonical" href="https://usefulweblab.com/drywall/"><link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css"><link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/calculator.css"><link rel="stylesheet" href="../assets/css/calculator-result.css">
+  <link rel="stylesheet" href="../assets/css/content.css"><link rel="stylesheet" href="../assets/css/themes.css?v=20261019">
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=20261019"><link rel="stylesheet" href="../assets/css/consent.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7381591341067052" crossorigin="anonymous"></script>
+  <script type="module" src="../assets/js/analytics.js"></script><script type="module" src="../assets/js/pages/drywall-page.js?v=20261019c"></script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Drywall Calculator","url":"https://usefulweblab.com/drywall/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Estimate drywall sheets and cost from room dimensions, openings, ceiling choice, panel size, and waste."}
+  </script>
+</head>
+<body class="calculator-page drywall-theme">
+  <div class="site-shell">
+    <div class="tool-ribbon" aria-hidden="true"></div>
+    <header class="site-header"><div class="nav-wrap">
+      <a class="brand" href="../" aria-label="Project Matter home"><span class="brand-mark" aria-hidden="true">M</span><span class="brand-name">Project Matter</span></a>
+      <nav class="main-nav" aria-label="Calculator navigation"><a class="mobile-nav-link" href="../#tools">Tools</a><a href="../flooring/">Flooring</a><a class="nav-current" aria-current="page" href="./">Drywall</a><a href="../concrete/">Concrete</a></nav>
+    </div></header>
+
+    <main class="calculator-main"><div class="section-wrap">
+      <section class="calculator-intro">
+        <div><p class="eyebrow">Drywall / panel estimate</p><h1 class="display-title">Drywall calculator</h1><p class="lede">Estimate full wallboard sheets for four walls and an optional ceiling, with standard openings and cutting waste.</p></div>
+        <aside class="trust-note"><strong>Your measurements stay private.</strong>This calculation runs in your browser. No room data is uploaded or stored.</aside>
+      </section>
+
+      <section class="calculator-stage" aria-label="Drywall estimator">
+        <form class="calculator-form" id="drywall-form" data-unit="imperial" novalidate>
+          <div class="form-toolbar"><h2>Project measurements</h2><div class="unit-toggle" aria-label="Measurement system"><button type="button" data-unit-target="imperial" aria-pressed="true">Imperial</button><button type="button" data-unit-target="metric" aria-pressed="false">Metric</button></div></div>
+          <div class="field-section"><h3>Room</h3><div class="field-grid three">
+            <div class="field"><label for="drywall-length">Length</label><div class="input-wrap"><input id="drywall-length" name="length" type="number" value="12" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+            <div class="field"><label for="drywall-width">Width</label><div class="input-wrap"><input id="drywall-width" name="width" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+            <div class="field"><label for="drywall-height">Wall height</label><div class="input-wrap"><input id="drywall-height" name="height" type="number" value="8" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+          </div></div>
+          <div class="field-section"><h3>Openings</h3><div class="field-grid">
+            <div class="field"><label for="drywall-doors">Standard doors</label><div class="input-wrap"><input id="drywall-doors" name="doors" type="number" value="1" min="0" step="1" inputmode="numeric"></div></div>
+            <div class="field"><label for="drywall-windows">Standard windows</label><div class="input-wrap"><input id="drywall-windows" name="windows" type="number" value="2" min="0" step="1" inputmode="numeric"></div></div>
+            <label class="check-row field full"><input name="includeCeiling" type="checkbox"><span>Include the ceiling in this board estimate.</span></label>
+          </div></div>
+          <div class="field-section"><h3>Panel & allowance</h3><div class="field-grid three">
+            <div class="field"><label for="drywall-sheet-width">Sheet width</label><div class="input-wrap"><input id="drywall-sheet-width" name="sheetWidth" type="number" value="4" min="0.01" step="0.01" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+            <div class="field"><label for="drywall-sheet-length">Sheet length</label><div class="input-wrap"><input id="drywall-sheet-length" name="sheetLength" type="number" value="8" min="0.01" step="0.01" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+            <div class="field"><label for="drywall-waste">Cutting allowance</label><div class="input-wrap"><input id="drywall-waste" name="waste" type="number" value="10" min="0" step="1" inputmode="decimal"><span class="unit-label">%</span></div></div>
+            <div class="field"><label for="drywall-price">Price per sheet</label><div class="input-wrap"><input id="drywall-price" name="pricePerSheet" type="number" value="18" min="0" step="0.01" inputmode="decimal"><span class="unit-label">$</span></div></div>
+          </div></div>
+          <div class="form-actions"><button class="button" type="button" data-action="reset">Reset</button><button class="button" type="button" data-action="copy">Copy estimate</button><button class="button primary" type="button" data-action="print">Print summary</button></div>
+        </form>
+
+        <aside class="result-panel" aria-label="Drywall estimate results" aria-live="polite">
+          <p class="result-kicker">Purchase estimate</p><div class="result-primary"><output id="drywall-sheets">—</output><span>full sheets to buy after openings and cutting allowance</span></div>
+          <dl class="result-list"><div class="result-row"><dt>Area to cover</dt><dd id="drywall-area">—</dd></div><div class="result-row"><dt>Board supplied</dt><dd id="drywall-supplied">—</dd></div><div class="result-row"><dt>Estimated material cost</dt><dd id="drywall-cost">—</dd></div></dl>
+          <p class="result-caution">Panel orientation, local code, fire ratings, and offcut reuse can change the final order.</p>
+        </aside>
+      </section>
+
+      <section class="formula-section"><h2>Coverage first, panel planning second.</h2><div class="formula-copy">
+        <article><h3>The calculation</h3><p>Four-wall area is reduced by standard openings. An optional ceiling and your allowance are added before division by sheet area.</p></article>
+        <article><h3>Waste stays visible</h3><p>USG's estimator notes that its panel count excludes waste. This tool exposes a separate allowance so you can match the room and layout. <a href="https://assemblies-tools.usg.com/content/usgcom/en/resource-center/tools/sheetrockestimator.html" rel="noreferrer">Source</a></p></article>
+      </div></section>
+
+      <section class="guide-section" aria-labelledby="drywall-guide-title"><div class="guide-heading"><p class="eyebrow">Before you buy</p><h2 id="drywall-guide-title">Plan seams before counting sheets.</h2></div><div class="guide-list">
+        <article class="guide-item"><span class="guide-number">01</span><div><h3>Check panel type</h3><p>Wet areas, garages, ceilings, and rated assemblies may require different products or thicknesses.</p></div></article>
+        <article class="guide-item"><span class="guide-number">02</span><div><h3>Map the orientation</h3><p>Panel direction and framing spacing determine where seams land and whether offcuts can be reused.</p></div></article>
+        <article class="guide-item"><span class="guide-number">03</span><div><h3>Count accessories separately</h3><p>Screws, joint tape, compound, corner bead, adhesive, and primer are not included in this sheet estimate.</p></div></article>
+      </div></section>
+    </div></main>
+
+    <footer class="site-footer"><div class="footer-wrap"><span>Planning estimate only. Confirm panel type and layout locally.</span><div class="footer-links"><a href="../">Home</a><a href="../flooring/">Flooring</a><a href="../concrete/">Concrete</a><a href="../privacy/">Privacy</a></div></div></footer>
+  </div>
+</body>
+</html>

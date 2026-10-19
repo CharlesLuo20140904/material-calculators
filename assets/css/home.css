@@ -165,8 +165,12 @@
   transition: background 300ms var(--ease);
 }
 
-.tool-card + .tool-card {
+.tool-card:not(:nth-child(3n + 1)) {
   border-left: 1px solid var(--line-strong);
+}
+
+.tool-card:nth-child(n + 4) {
+  border-top: 1px solid var(--line-strong);
 }
 
 .tool-card:hover {
@@ -200,6 +204,27 @@
 .paper-swatch {
   background: repeating-linear-gradient(90deg, var(--clay) 0 20px, transparent 20px 34px);
   opacity: 0.7;
+}
+
+.flooring-swatch {
+  background: repeating-linear-gradient(105deg, #947456 0 25px, #c3a581 25px 28px, #725b45 28px 54px);
+  opacity: 0.78;
+}
+
+.drywall-swatch {
+  border: 1px solid #8d9790;
+  background-image: linear-gradient(#a9b2ac 1px, transparent 1px),
+    linear-gradient(90deg, #a9b2ac 1px, transparent 1px);
+  background-size: 50% 100%, 50% 100%;
+}
+
+.concrete-swatch {
+  border-radius: 8px;
+  background-color: #7d8588;
+  background-image: radial-gradient(circle at 18% 30%, #c0c3bd 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 65%, #555e62 0 3px, transparent 4px),
+    radial-gradient(circle at 44% 78%, #a4a9a6 0 2px, transparent 3px);
+  background-size: 44px 38px, 58px 46px, 34px 40px;
 }
 
 .tool-card h2 {
