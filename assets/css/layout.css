@@ -21,6 +21,7 @@
 
 .brand {
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 12px;
   color: var(--ink);
@@ -49,7 +50,8 @@
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(15px, 1.8vw, 28px);
+  white-space: nowrap;
 }
 
 .mobile-nav-link {

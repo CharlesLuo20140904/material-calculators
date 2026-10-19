@@ -6,6 +6,11 @@ const projectPath = '/material-calculators/';
 const required = ['.nojekyll', '404.html', 'CNAME', 'ads.txt', 'robots.txt', 'sitemap.xml'];
 const productionDomain = 'usefulweblab.com';
 const publisherId = 'pub-7381591341067052';
+const calculatorPages = [
+  'paint/index.html', 'tile/index.html', 'wallpaper/index.html',
+  'flooring/index.html', 'drywall/index.html', 'concrete/index.html',
+];
+const calculatorLinks = ['paint', 'tile', 'wallpaper', 'flooring', 'drywall', 'concrete'];
 const errors = [];
 
 function collect(directory) {
@@ -52,14 +57,23 @@ function checkProductionDomain(path, html) {
 
 function checkAdsense(path, html) {
   const relativePath = relative(root, path);
-  const monetized = [
-    'index.html', 'paint/index.html', 'tile/index.html', 'wallpaper/index.html',
-    'flooring/index.html', 'drywall/index.html', 'concrete/index.html',
-  ];
+  const monetized = ['index.html', ...calculatorPages];
   if (!monetized.includes(relativePath)) return;
   if (!html.includes(`ca-${publisherId}`)) {
     errors.push(`${relativePath}: missing AdSense publisher ID`);
   }
+}
+
+function checkToolNavigation(path, html) {
+  const relativePath = relative(root, path);
+  if (!calculatorPages.includes(relativePath)) return;
+  const navigation = html.match(/<nav class="main-nav"[\s\S]*?<\/nav>/)?.[0] || '';
+  calculatorLinks.forEach((slug) => {
+    const currentLink = `href="./">${slug[0].toUpperCase()}${slug.slice(1)}`;
+    if (!navigation.includes(`href="../${slug}/"`) && !navigation.includes(currentLink)) {
+      errors.push(`${relativePath}: missing ${slug} in calculator navigation`);
+    }
+  });
 }
 
 function checkDeploymentFiles() {
@@ -102,6 +116,7 @@ collect(root).filter((path) => extname(path) === '.html').forEach((path) => {
   checkAdsense(path, html);
   checkReferences(path, html);
   checkStructuredData(path, html);
+  checkToolNavigation(path, html);
 });
 
 if (errors.length) {
