@@ -3,7 +3,9 @@ import { dirname, extname, join, normalize, relative, resolve } from 'node:path'
 
 const root = resolve(new URL('..', import.meta.url).pathname);
 const projectPath = '/material-calculators/';
-const required = ['.nojekyll', '404.html', 'robots.txt', 'sitemap.xml'];
+const required = ['.nojekyll', '404.html', 'CNAME', 'ads.txt', 'robots.txt', 'sitemap.xml'];
+const productionDomain = 'usefulweblab.com';
+const publisherId = 'pub-7381591341067052';
 const errors = [];
 
 function collect(directory) {
@@ -41,6 +43,31 @@ function checkMetadata(path, html) {
   });
 }
 
+function checkProductionDomain(path, html) {
+  if (path.endsWith('404.html') || /google[a-f0-9]+\.html$/.test(path)) return;
+  if (html.includes('charlesluo20140904.github.io')) {
+    errors.push(`${relative(root, path)}: old GitHub Pages URL remains`);
+  }
+}
+
+function checkAdsense(path, html) {
+  const relativePath = relative(root, path);
+  const monetized = ['index.html', 'paint/index.html', 'tile/index.html', 'wallpaper/index.html'];
+  if (!monetized.includes(relativePath)) return;
+  if (!html.includes(`ca-${publisherId}`)) {
+    errors.push(`${relativePath}: missing AdSense publisher ID`);
+  }
+}
+
+function checkDeploymentFiles() {
+  const cname = readFileSync(join(root, 'CNAME'), 'utf8').trim();
+  const ads = readFileSync(join(root, 'ads.txt'), 'utf8').trim();
+  if (cname !== productionDomain) errors.push('CNAME: unexpected production domain');
+  if (!ads.includes(`google.com, ${publisherId}, DIRECT`)) {
+    errors.push('ads.txt: missing direct Google seller entry');
+  }
+}
+
 function checkReferences(path, html) {
   const references = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((match) => match[1]);
   references.forEach((reference) => {
@@ -63,10 +90,13 @@ function checkStructuredData(path, html) {
 required.forEach((path) => {
   if (!existsSync(join(root, path))) errors.push(`missing ${path}`);
 });
+if (!errors.length) checkDeploymentFiles();
 
 collect(root).filter((path) => extname(path) === '.html').forEach((path) => {
   const html = readFileSync(normalize(path), 'utf8');
   checkMetadata(path, html);
+  checkProductionDomain(path, html);
+  checkAdsense(path, html);
   checkReferences(path, html);
   checkStructuredData(path, html);
 });
