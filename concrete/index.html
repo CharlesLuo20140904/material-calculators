@@ -1,76 +1,111 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Calculate slab concrete volume, full premix bags, waste allowance, supplied volume, and material cost.">
-  <meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#4f575b">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="Project Matter">
-  <meta property="og:title" content="Concrete Calculator — Slab Volume, Bags & Cost">
-  <meta property="og:description" content="Estimate slab volume and full premix bags with editable depth, yield, waste, and price.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate concrete slab volume, 40 lb, 60 lb, and 80 lb bag quantities, extra allowance, supplied volume, and material cost.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#4f575b">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Project Matter">
+  <meta property="og:title" content="Concrete Slab Calculator — Yards, Bags & Cost">
+  <meta property="og:description" content="Compare 40, 60, and 80 lb premix bag counts for a concrete slab and know when to quote ready-mix.">
   <meta property="og:url" content="https://usefulweblab.com/concrete/">
-  <meta name="google-adsense-account" content="ca-pub-7381591341067052"><meta name="twitter:card" content="summary">
-  <title>Concrete Calculator — Slab Volume, Bags & Cost | Project Matter</title>
-  <link rel="canonical" href="https://usefulweblab.com/concrete/"><link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="google-adsense-account" content="ca-pub-7381591341067052">
+  <meta name="twitter:card" content="summary">
+  <title>Concrete Slab Calculator — Yards, Bags & Cost | Project Matter</title>
+  <link rel="canonical" href="https://usefulweblab.com/concrete/">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap">
-  <link rel="stylesheet" href="../assets/css/tokens.css"><link rel="stylesheet" href="../assets/css/layout.css?v=20261019d">
-  <link rel="stylesheet" href="../assets/css/calculator.css"><link rel="stylesheet" href="../assets/css/calculator-result.css">
-  <link rel="stylesheet" href="../assets/css/content.css"><link rel="stylesheet" href="../assets/css/themes.css?v=20261019">
-  <link rel="stylesheet" href="../assets/css/responsive.css?v=20261019e"><link rel="stylesheet" href="../assets/css/consent.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/calculator.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/calculator-result.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/content.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/calculator-controls.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/content-enhancements.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/themes.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=20261026">
+  <link rel="stylesheet" href="../assets/css/consent.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7381591341067052" crossorigin="anonymous"></script>
-  <script type="module" src="../assets/js/analytics.js"></script><script type="module" src="../assets/js/pages/concrete-page.js?v=20261019c"></script>
+  <script type="module" src="../assets/js/analytics.js"></script>
+  <script type="module" src="../assets/js/pages/concrete-page.js?v=20261026"></script>
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebApplication","name":"Concrete Calculator","url":"https://usefulweblab.com/concrete/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Estimate slab volume, full premix bags, and cost from dimensions, bag yield, and waste allowance."}
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Concrete Slab Calculator","url":"https://usefulweblab.com/concrete/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"Estimate concrete slab volume, compare 40, 60, and 80 lb premix bag quantities, and calculate material cost."}
   </script>
 </head>
-<body class="calculator-page concrete-theme"><div class="site-shell">
-  <div class="tool-ribbon" aria-hidden="true"></div>
-  <header class="site-header"><div class="nav-wrap">
-    <a class="brand" href="../" aria-label="Project Matter home"><span class="brand-mark" aria-hidden="true">M</span><span class="brand-name">Project Matter</span></a>
-    <nav class="main-nav" aria-label="Calculator navigation"><a class="mobile-nav-link" href="../#tools">All tools</a><a href="../paint/">Paint</a><a href="../tile/">Tile</a><a href="../wallpaper/">Wallpaper</a><a href="../flooring/">Flooring</a><a href="../drywall/">Drywall</a><a class="nav-current" aria-current="page" href="./">Concrete</a></nav>
-  </div></header>
+<body class="calculator-page concrete-theme">
+  <div class="site-shell">
+    <div class="tool-ribbon" aria-hidden="true"></div>
+    <header class="site-header"><div class="nav-wrap">
+      <a class="brand" href="../" aria-label="Project Matter home"><span class="brand-mark" aria-hidden="true">M</span><span class="brand-name">Project Matter</span></a>
+      <nav class="main-nav" aria-label="Calculator navigation"><a class="mobile-nav-link" href="../#tools">All tools</a><a href="../paint/">Paint</a><a href="../tile/">Tile</a><a href="../wallpaper/">Wallpaper</a><a href="../flooring/">Flooring</a><a href="../drywall/">Drywall</a><a class="nav-current" aria-current="page" href="./">Concrete</a></nav>
+    </div></header>
 
-  <main class="calculator-main"><div class="section-wrap">
-    <section class="calculator-intro">
-      <div><p class="eyebrow">Concrete / slab estimate</p><h1 class="display-title">Concrete calculator</h1><p class="lede">Estimate slab volume and full premix bags from finished dimensions, product yield, waste, and local shelf price.</p></div>
-      <aside class="trust-note"><strong>Your measurements stay private.</strong>This calculation runs in your browser. No project data is uploaded or stored.</aside>
-    </section>
+    <main class="calculator-main"><div class="section-wrap">
+      <section class="calculator-intro">
+        <div><p class="eyebrow">Concrete / slab estimate</p><h1 class="display-title">Concrete slab calculator</h1><p class="lede">Turn finished slab dimensions into cubic yards or meters, compare common bag sizes, and estimate your selected mix cost.</p></div>
+        <aside class="trust-note"><strong>Bag yield, not bag weight, drives the count.</strong>The presets use published approximate yields. Confirm the exact product data sheet before buying.</aside>
+      </section>
 
-    <section class="calculator-stage" aria-label="Concrete estimator">
-      <form class="calculator-form" id="concrete-form" data-unit="imperial" novalidate>
-        <div class="form-toolbar"><h2>Slab measurements</h2><div class="unit-toggle" aria-label="Measurement system"><button type="button" data-unit-target="imperial" aria-pressed="true">Imperial</button><button type="button" data-unit-target="metric" aria-pressed="false">Metric</button></div></div>
-        <div class="field-section"><h3>Finished slab</h3><div class="field-grid three">
-          <div class="field"><label for="concrete-length">Length</label><div class="input-wrap"><input id="concrete-length" name="length" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
-          <div class="field"><label for="concrete-width">Width</label><div class="input-wrap"><input id="concrete-width" name="width" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
-          <div class="field"><label for="concrete-depth">Depth</label><div class="input-wrap"><input id="concrete-depth" name="depth" type="number" value="4" min="0.01" step="0.1" data-convert="smallLength" inputmode="decimal"><span class="unit-label" data-unit-imperial="in" data-unit-metric="cm">in</span></div></div>
-        </div></div>
-        <div class="field-section"><h3>Mix & allowance</h3><div class="field-grid three">
-          <div class="field"><label for="concrete-yield">Yield per bag</label><div class="input-wrap"><input id="concrete-yield" name="bagYield" type="number" value="0.6" min="0.0001" step="0.0001" data-convert="volume" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft³" data-unit-metric="m³">ft³</span></div></div>
-          <div class="field"><label for="concrete-waste">Extra allowance</label><div class="input-wrap"><input id="concrete-waste" name="waste" type="number" value="5" min="0" step="1" inputmode="decimal"><span class="unit-label">%</span></div></div>
-          <div class="field"><label for="concrete-price">Price per bag</label><div class="input-wrap"><input id="concrete-price" name="pricePerBag" type="number" value="6" min="0" step="0.01" inputmode="decimal"><span class="unit-label">$</span></div></div>
-        </div></div>
-        <div class="form-actions"><button class="button" type="button" data-action="reset">Reset</button><button class="button" type="button" data-action="copy">Copy estimate</button><button class="button primary" type="button" data-action="print">Print summary</button></div>
-      </form>
+      <section class="calculator-stage" aria-label="Concrete slab estimator">
+        <form class="calculator-form" id="concrete-form" data-unit="imperial" novalidate>
+          <div class="form-toolbar"><h2>Slab & mix details</h2><div class="unit-toggle" aria-label="Measurement system"><button type="button" data-unit-target="imperial" aria-pressed="true">Imperial</button><button type="button" data-unit-target="metric" aria-pressed="false">Metric</button></div></div>
+          <div class="field-section"><h3>Finished slab</h3><div class="field-grid three">
+            <div class="field"><label for="concrete-length">Length</label><div class="input-wrap"><input id="concrete-length" name="length" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+            <div class="field"><label for="concrete-width">Width</label><div class="input-wrap"><input id="concrete-width" name="width" type="number" value="10" min="0.01" step="0.1" data-convert="length" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft" data-unit-metric="m">ft</span></div></div>
+            <div class="field"><label for="concrete-depth">Depth</label><div class="input-wrap"><input id="concrete-depth" name="depth" type="number" value="4" min="0.01" step="0.1" data-convert="smallLength" inputmode="decimal"><span class="unit-label" data-unit-imperial="in" data-unit-metric="cm">in</span></div></div>
+          </div></div>
 
-      <aside class="result-panel" aria-label="Concrete estimate results" aria-live="polite">
-        <p class="result-kicker">Purchase estimate</p><div class="result-primary"><output id="concrete-bags">—</output><span>full premix bags to buy after the extra allowance</span></div>
-        <dl class="result-list"><div class="result-row"><dt>Order volume</dt><dd id="concrete-volume">—</dd></div><div class="result-row"><dt>Bagged volume supplied</dt><dd id="concrete-supplied">—</dd></div><div class="result-row"><dt>Estimated material cost</dt><dd id="concrete-cost">—</dd></div></dl>
-        <p class="result-caution">Subgrade variation, forms, spillage, consolidation, and the product's actual yield affect the final order.</p>
-      </aside>
-    </section>
+          <div class="field-section">
+            <div class="section-label-row"><div><h3>Bagged mix</h3><p>Select a common size or enter the yield printed on your bag.</p></div><div class="preset-group bag-presets" aria-label="Common bag sizes"><button type="button" data-bag-size="40" aria-pressed="false">40 lb</button><button type="button" data-bag-size="60" aria-pressed="false">60 lb</button><button type="button" data-bag-size="80" aria-pressed="true">80 lb</button></div></div>
+            <div class="selection-note"><span>Selected preset</span><strong id="selected-bag-size">80 lb bag</strong></div>
+            <div class="field-grid three">
+              <div class="field"><label for="concrete-yield">Yield per bag</label><div class="input-wrap"><input id="concrete-yield" name="bagYield" type="number" value="0.6" min="0.0001" step="0.0001" data-convert="volume" inputmode="decimal"><span class="unit-label" data-unit-imperial="ft³" data-unit-metric="m³">ft³</span></div></div>
+              <div class="field"><label for="concrete-waste">Extra allowance</label><div class="input-wrap"><input id="concrete-waste" name="waste" type="number" value="5" min="0" step="1" inputmode="decimal"><span class="unit-label">%</span></div></div>
+              <div class="field"><label for="concrete-price">Price per selected bag</label><div class="input-wrap"><input id="concrete-price" name="pricePerBag" type="number" value="6" min="0" step="0.01" inputmode="decimal"><span class="unit-label">$</span></div></div>
+            </div>
+          </div>
+          <div class="form-actions"><button class="button" type="button" data-action="reset">Reset</button><button class="button" type="button" data-action="copy">Copy estimate</button><button class="button primary" type="button" data-action="print">Print summary</button></div>
+        </form>
 
-    <section class="formula-section"><h2>Volume is simple. Real yield belongs on the bag.</h2><div class="formula-copy">
-      <article><h3>The calculation</h3><p>Length × width × depth gives slab volume. The allowance is added before volume is divided by the bag yield and rounded up.</p></article>
-      <article><h3>Use the product yield</h3><p>The 0.60 ft³ default matches a common 80 lb concrete mix, but bag sizes and products vary. Replace it with the label. <a href="https://www.quikrete.com/pdfs/spec_data-concretemix.pdf" rel="noreferrer">Source</a></p></article>
-    </div></section>
+        <aside class="result-panel" aria-label="Concrete estimate results" aria-live="polite">
+          <p class="result-kicker">Selected-bag estimate</p>
+          <div class="result-primary"><output id="concrete-bags">—</output><span>full bags to buy after the extra allowance</span></div>
+          <div class="bag-comparison" aria-label="Bag size comparison"><p>Same pour, common sizes</p><div><span><strong id="bags-40">—</strong>40 lb</span><span><strong id="bags-60">—</strong>60 lb</span><span><strong id="bags-80">—</strong>80 lb</span></div></div>
+          <dl class="result-list"><div class="result-row"><dt>Order volume</dt><dd id="concrete-volume">—</dd></div><div class="result-row"><dt>Bagged volume supplied</dt><dd id="concrete-supplied">—</dd></div><div class="result-row"><dt>Selected-bag cost</dt><dd id="concrete-cost">—</dd></div></dl>
+          <p class="result-caution" id="concrete-message">Subgrade variation, forms, spillage, and product yield affect the final order.</p>
+        </aside>
+      </section>
 
-    <section class="guide-section" aria-labelledby="concrete-guide-title"><div class="guide-heading"><p class="eyebrow">Before you pour</p><h2 id="concrete-guide-title">Check the form, base, and batch size.</h2></div><div class="guide-list">
-      <article class="guide-item"><span class="guide-number">01</span><div><h3>Measure finished depth</h3><p>Confirm excavation, compacted base, drainage, reinforcement, and local requirements before calculating concrete.</p></div></article>
-      <article class="guide-item"><span class="guide-number">02</span><div><h3>Read the yield line</h3><p>Bag weight alone is not yield. Use the mixed-volume figure from the exact product data sheet.</p></div></article>
-      <article class="guide-item"><span class="guide-number">03</span><div><h3>Compare delivery</h3><p>A high bag count may be slower or more expensive than ready-mix. Use the order-volume result when requesting quotes.</p></div></article>
-    </div></section>
-  </div></main>
+      <section class="formula-section"><h2>Volume first. Then choose how to buy it.</h2><div class="formula-copy three-up">
+        <article><h3>1. Find slab volume</h3><p>Length × width × finished depth gives concrete volume. Depth is converted from inches or centimeters before multiplication.</p></article>
+        <article><h3>2. Add an allowance</h3><p>The selected percentage covers reasonable variation. It is applied before the result is divided by product yield.</p></article>
+        <article><h3>3. Round to full bags</h3><p>Each comparison uses the published approximate yield and rounds upward because partial bags are not a purchasing unit.</p></article>
+      </div></section>
 
-  <footer class="site-footer"><div class="footer-wrap"><span>Planning estimate only. Confirm mix, yield, structure, and code locally.</span><div class="footer-links"><a href="../">Home</a><a href="../paint/">Paint</a><a href="../tile/">Tile</a><a href="../wallpaper/">Wallpaper</a><a href="../flooring/">Flooring</a><a href="../drywall/">Drywall</a><a href="./">Concrete</a><a href="../privacy/">Privacy</a></div></div></footer>
-</div></body>
+      <section class="reference-section" aria-labelledby="bag-yields"><div><p class="eyebrow">Quick reference</p><h2 id="bag-yields">Common bag yields</h2><p>These approximate yields are published for QUIKRETE Concrete Mix. Other formulations can differ, so the editable yield remains the source of truth.</p><a class="text-link" href="https://www.quikrete.com/pdfs/data_sheet-concrete%20mix%201101.pdf" rel="noreferrer">View the product data sheet →</a></div><div class="reference-table" role="table" aria-label="Common concrete bag yields">
+        <div class="reference-row reference-head" role="row"><span>Bag</span><span>Approx. yield</span><span>Metric yield</span></div>
+        <div class="reference-row" role="row"><strong>40 lb</strong><span>0.30 ft³</span><span>8.5 L</span></div>
+        <div class="reference-row" role="row"><strong>60 lb</strong><span>0.45 ft³</span><span>12.7 L</span></div>
+        <div class="reference-row" role="row"><strong>80 lb</strong><span>0.60 ft³</span><span>17 L</span></div>
+      </div></section>
+
+      <section class="common-sizes" aria-labelledby="slab-examples"><div class="section-label-row"><div><p class="eyebrow">At 4 in deep + 5% allowance</p><h2 id="slab-examples">Common slab examples</h2></div><a class="text-link" href="../guides/concrete-80lb-bags-10x10-slab/">See the 10 × 10 breakdown →</a></div><div class="size-grid">
+        <article><span>Walkway pad</span><strong>4 × 4 ft</strong><p>About 10 bags at 80 lb</p></article>
+        <article><span>Small landing</span><strong>6 × 6 ft</strong><p>About 21 bags at 80 lb</p></article>
+        <article><span>Utility slab</span><strong>10 × 10 ft</strong><p>About 59 bags at 80 lb</p></article>
+      </div><p class="field-help">Examples are planning references, not structural recommendations. Required thickness and reinforcement depend on use and local conditions.</p></section>
+
+      <section class="related-section"><div><p class="eyebrow">Planning guides</p><h2>Choose bags or delivery with the full job in view.</h2></div><div class="related-grid">
+        <a href="../guides/concrete-80lb-bags-10x10-slab/"><span>Worked example</span><strong>How many 80 lb bags for a 10 × 10 slab?</strong><i aria-hidden="true">→</i></a>
+        <a href="../guides/bagged-concrete-vs-ready-mix/"><span>Buying decision</span><strong>Bagged concrete vs ready-mix: what to compare</strong><i aria-hidden="true">→</i></a>
+      </div></section>
+    </div></main>
+
+    <footer class="site-footer"><div class="footer-wrap"><span>Planning estimate only. Confirm mix, yield, structure, and code locally.</span><div class="footer-links"><a href="../">Home</a><a href="../paint/">Paint</a><a href="../tile/">Tile</a><a href="../wallpaper/">Wallpaper</a><a href="../flooring/">Flooring</a><a href="../drywall/">Drywall</a><a href="./">Concrete</a><a href="../privacy/">Privacy</a></div></div></footer>
+  </div>
+</body>
 </html>

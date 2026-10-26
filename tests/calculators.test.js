@@ -5,7 +5,7 @@ import { calculateTile } from '../assets/js/calculators/tile.js';
 import { calculateWallpaper } from '../assets/js/calculators/wallpaper.js';
 import { calculateFlooring } from '../assets/js/calculators/flooring.js';
 import { calculateDrywall, DRYWALL_DEFAULTS } from '../assets/js/calculators/drywall.js';
-import { calculateConcrete } from '../assets/js/calculators/concrete.js';
+import { calculateConcrete, CONCRETE_BAG_OPTIONS } from '../assets/js/calculators/concrete.js';
 import { convert } from '../assets/js/core/units.js';
 
 test('paint estimate deducts openings and rounds to quarter gallons', () => {
@@ -81,6 +81,31 @@ test('wallpaper rejects a roll shorter than one full drop', () => {
   assert.equal(result, null);
 });
 
+test('wallpaper rounds each wall independently and deducts full-height openings', () => {
+  const result = calculateWallpaper({
+    unit: 'imperial', height: 8, rollWidth: 24, rollLength: 33,
+    repeat: 0, trim: 0, pricePerRoll: 50, reserveRoll: false,
+    matchType: 'random', walls: [
+      { width: 5, openingWidth: 0 },
+      { width: 5, openingWidth: 3 },
+    ],
+  });
+  assert.equal(result.dropsNeeded, 4);
+  assert.equal(result.baseRolls, 1);
+});
+
+test('half-drop wallpaper alternates a longer offset cut', () => {
+  const result = calculateWallpaper({
+    unit: 'imperial', wallWidth: 10, height: 8,
+    rollWidth: 24, rollLength: 40, repeat: 24,
+    trim: 0, pricePerRoll: 50, reserveRoll: false, matchType: 'half-drop',
+  });
+  assert.equal(result.dropsNeeded, 5);
+  assert.equal(result.standardDrop, 8);
+  assert.equal(result.offsetDrop, 10);
+  assert.equal(result.repeatWaste, 4);
+});
+
 test('flooring estimate rounds purchase quantity to full boxes', () => {
   const result = calculateFlooring({
     length: 12, width: 10, waste: 10, coveragePerBox: 22, pricePerBox: 55,
@@ -111,6 +136,12 @@ test('concrete estimate converts slab depth and rounds to full bags', () => {
   assert.equal(result.bags, 59);
   assert.ok(Math.abs(result.orderVolume - 1.2963) < 0.0001);
   assert.equal(result.cost, 354);
+  assert.equal(result.bagComparisons.find((item) => item.size === 40).bags, 117);
+  assert.equal(result.compareReadyMix, true);
+});
+
+test('concrete presets expose documented 40, 60, and 80 lb yields', () => {
+  assert.deepEqual(CONCRETE_BAG_OPTIONS.map((option) => option.imperial), [0.3, 0.45, 0.6]);
 });
 
 test('unit conversion preserves common paint coverage', () => {
