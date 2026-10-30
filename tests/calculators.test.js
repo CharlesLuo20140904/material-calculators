@@ -33,6 +33,18 @@ test('paint estimate can include a ceiling', () => {
   assert.equal(result.purchase, 5);
 });
 
+test('paint guide 12 by 12 example rounds to 2.25 gallons', () => {
+  const result = calculatePaint({
+    unit: 'imperial', length: 12, width: 12, height: 8,
+    doors: 1, windows: 2, coats: 2, coverage: 350,
+    waste: 5, price: 0, includeCeiling: false,
+    doorArea: PAINT_DEFAULTS.doorArea.imperial,
+    windowArea: PAINT_DEFAULTS.windowArea.imperial,
+  });
+  assert.equal(result.netArea, 339);
+  assert.equal(result.purchase, 2.25);
+});
+
 test('tile estimate rounds tiles and boxes upward', () => {
   const result = calculateTile({
     unit: 'imperial', length: 12, width: 10,
@@ -114,6 +126,15 @@ test('flooring estimate rounds purchase quantity to full boxes', () => {
   assert.equal(result.boxes, 6);
   assert.equal(result.purchaseArea, 132);
   assert.equal(result.cost, 330);
+});
+
+test('flooring guide irregular room example rounds to seven boxes', () => {
+  const result = calculateFlooring({
+    length: 12, width: 11, waste: 10, coveragePerBox: 22, pricePerBox: 0,
+  });
+  assert.equal(result.area, 132);
+  assert.equal(result.boxes, 7);
+  assert.equal(result.purchaseArea, 154);
 });
 
 test('drywall estimate deducts openings and includes an optional ceiling', () => {

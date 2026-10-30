@@ -11,6 +11,7 @@ const calculatorPages = [
   'flooring/index.html', 'drywall/index.html', 'concrete/index.html',
 ];
 const calculatorLinks = ['paint', 'tile', 'wallpaper', 'flooring', 'drywall', 'concrete'];
+const trustPages = ['about', 'contact', 'methodology', 'editorial-policy', 'privacy'];
 const errors = [];
 
 function collect(directory) {
@@ -104,10 +105,60 @@ function checkStructuredData(path, html) {
   });
 }
 
+function visibleWordCount(html) {
+  const text = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-z0-9#]+;/gi, ' ');
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function checkGuideQuality(path, html) {
+  const relativePath = relative(root, path);
+  if (!relativePath.startsWith('guides/')) return;
+  if (visibleWordCount(html) < 450) errors.push(`${relativePath}: guide is under 450 visible words`);
+  if (!html.includes('class="source-note"')) errors.push(`${relativePath}: missing source note`);
+  if (!html.includes('"author"')) errors.push(`${relativePath}: missing structured author`);
+  if (!html.includes('/about/')) errors.push(`${relativePath}: missing publisher link`);
+  if (!html.includes('/methodology/')) errors.push(`${relativePath}: missing methodology link`);
+}
+
+function checkTrustLinks(path, html) {
+  const relativePath = relative(root, path);
+  if (relativePath === '404.html' || /google[a-f0-9]+\.html$/.test(relativePath)) return;
+  ['about/', 'methodology/', 'contact/', 'privacy/'].forEach((target) => {
+    if (!html.includes(target)) errors.push(`${relativePath}: missing trust link ${target}`);
+  });
+}
+
+function sitemapPaths() {
+  const xml = readFileSync(join(root, 'sitemap.xml'), 'utf8');
+  return new Set([...xml.matchAll(/<loc>https:\/\/usefulweblab\.com\/(.*?)<\/loc>/g)]
+    .map((match) => match[1]));
+}
+
+function checkContentInventory() {
+  const guides = collect(join(root, 'guides')).filter((path) => path.endsWith('index.html'));
+  if (guides.length < 12) errors.push(`guides: expected at least 12, found ${guides.length}`);
+  trustPages.forEach((slug) => {
+    if (!existsSync(join(root, slug, 'index.html'))) errors.push(`missing ${slug}/index.html`);
+  });
+  const sitemap = sitemapPaths();
+  [...calculatorLinks, ...trustPages].forEach((slug) => {
+    if (!sitemap.has(`${slug}/`)) errors.push(`sitemap: missing ${slug}/`);
+  });
+  guides.forEach((path) => {
+    const slug = `${relative(root, dirname(path)).replaceAll('\\', '/')}/`;
+    if (!sitemap.has(slug)) errors.push(`sitemap: missing ${slug}`);
+  });
+}
+
 required.forEach((path) => {
   if (!existsSync(join(root, path))) errors.push(`missing ${path}`);
 });
 if (!errors.length) checkDeploymentFiles();
+checkContentInventory();
 
 collect(root).filter((path) => extname(path) === '.html').forEach((path) => {
   const html = readFileSync(normalize(path), 'utf8');
@@ -117,6 +168,8 @@ collect(root).filter((path) => extname(path) === '.html').forEach((path) => {
   checkReferences(path, html);
   checkStructuredData(path, html);
   checkToolNavigation(path, html);
+  checkGuideQuality(path, html);
+  checkTrustLinks(path, html);
 });
 
 if (errors.length) {
